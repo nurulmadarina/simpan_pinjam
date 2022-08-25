@@ -38,12 +38,11 @@ public class DataMember {
 	@Column(name = "team_id")
 	private String teamId;
 	
-	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "created_timestamp")
-	private Date createdTimestamp;
+	private Timestamp createdTimestamp;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	
 	@Column(name = "updated_timestamp")
-	private Date updatedTimestamp;
+	private Timestamp updatedTimestamp;
 
 }

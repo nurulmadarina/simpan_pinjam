@@ -15,9 +15,9 @@ import com.example.simpan.pinjam.dao.entity.DataTransaction;
 public interface DataTransactionRepository extends JpaRepository <DataTransaction, String> {
 	
 	@Query(value = "select * from transaction as a "
-			+ "where a.date_transaction between :dateTransaction and :dateTransaction "
+			+ "where a.date_transaction between :dateT1 and :dateT2 "
 			+ "order by a.date_transaction desc", nativeQuery = true)
-	List<DataTransaction> findTrasactionByDate( @Param("dateTransaction")Date from, @Param("dateTransaction")Date to, Pageable pageable);
+	List<DataTransaction> findTrasactionByDate( @Param("dateT1")Date from, @Param("dateT2")Date to, Pageable pageable);
 
 	@Query(value = "select * from transaction as a "
 			+ "where a.member_id = :memberId "

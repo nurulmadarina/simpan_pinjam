@@ -41,6 +41,9 @@ public class AppService implements IAppService {
 	
 	@Autowired
 	private DataTransactionRepository dataTransactionRepo;
+	
+	private static final SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
 	@Override
 	public BaseResponse saveNewMember(RequestDto request) {
@@ -52,8 +55,8 @@ public class AppService implements IAppService {
 			newAnggota.setDateBirth(request.getDateBirth());
 			newAnggota.setAddress(request.getAddress());
 			newAnggota.setTeamId(request.getTeamId());
-			newAnggota.setCreatedTimestamp(new Date());
-			
+			newAnggota.setCreatedTimestamp(timestamp);
+			System.out.println (timestamp);
 			dataMemberRepo.save(newAnggota);
 		}catch (Exception e){
 			throw e;
@@ -81,7 +84,8 @@ public class AppService implements IAppService {
 		transaction.setMemberId(member.get().getId());
 		transaction.setDateTransaction(dateTransaction);
 		transaction.setPrice(request.getPrice());
-		transaction.setCreatedTimestamp(new Date());
+		transaction.setCreatedTimestamp(timestamp);
+		
 		dataTransactionRepo.save(transaction);
 		return  new BaseResponse<>("Transaction Success");
 	}
@@ -119,6 +123,8 @@ public class AppService implements IAppService {
 			throw new ReturnException ("Start Date Tidak Boleh Kosong");
 		}
 		transactions = dataTransactionRepo.findTrasactionByDate(request.getDateStart(), request.getDateEnd(), Pageable.ofSize(request.getSize()));
+		System.out.println("cek value total :: " + transactions );
+		System.out.println("cek value total :: " + transactions.size());
 		return new BaseResponse<>(transactions);
 	}
 

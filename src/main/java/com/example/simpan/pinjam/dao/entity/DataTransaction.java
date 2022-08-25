@@ -1,6 +1,7 @@
 package com.example.simpan.pinjam.dao.entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -50,12 +51,12 @@ public class DataTransaction implements Serializable{
 	@Column(name = "date_transaction")
 	private Date dateTransaction;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+
 	@Column(name = "created_timestamp")
-	private Date createdTimestamp;
+	private Timestamp createdTimestamp;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	
 	@Column(name = "updated_timestamp")
-	private Date updatedTimestamp;
+	private Timestamp updatedTimestamp;
 
 }

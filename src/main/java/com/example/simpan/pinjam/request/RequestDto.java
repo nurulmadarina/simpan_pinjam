@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
+import org.springframework.validation.annotation.Validated;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -16,7 +19,7 @@ public class RequestDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@JsonProperty("name")
-	@Min(value = 3, message = "Name should not be less than 3 character")
+	@Size(min = 2, message = "Name should not be less than 3 character")
 	private String name;
 	
 	@JsonProperty("date_birth")

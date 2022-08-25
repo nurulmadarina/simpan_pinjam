@@ -72,12 +72,12 @@ public class AppService implements IAppService {
 	}
 
 	@Override
-	public BaseResponse addNewTransaction(RequestDto request) throws Exception {
+	public BaseResponse addNewTransaction(RequestDto request) throws Exception  {
 		Optional<DataMember> member = null;
 		DataTransaction transaction = new DataTransaction();
 		Date dateTransaction = new SimpleDateFormat("yyyy-MM-dd").parse(request.getDateTransaction()); 
 		member = dataMemberRepo.findMember(request.getName());
-		if (!member.isPresent()) {
+		if (!member.isPresent()) {		
 			throw new ReturnException ("Member Belum Terdaftar");
 		}
 		transaction.setActivityTransaction(request.getActivityTransaction());

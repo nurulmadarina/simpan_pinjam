@@ -3,6 +3,7 @@ package com.example.simpan.pinjam.rest;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,7 @@ import com.example.simpan.pinjam.request.RequestDto;
 public interface IAppController {
 	
 	@PostMapping(path = "/addNewMember")	
-	public BaseResponse addNewMember(@RequestBody RequestDto request,  HttpServletRequest httpRequest);
+	public BaseResponse addNewMember( @Valid @RequestBody RequestDto request,  HttpServletRequest httpRequest);
 	
 	@GetMapping(path = "/getAllMember")	
 	public BaseResponse getAllMember();

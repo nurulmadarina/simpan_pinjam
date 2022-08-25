@@ -23,7 +23,7 @@ public class AppController implements IAppController{
 	IAppService appService;
 
 	@Override
-	public BaseResponse addNewMember(@RequestBody RequestDto request, HttpServletRequest httpRequest) {
+	public BaseResponse addNewMember(RequestDto request, HttpServletRequest httpRequest) {
 		return appService.saveNewMember(request);
 	}
 
